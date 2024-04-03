@@ -59,9 +59,9 @@ int one()
     printf("\nAllow one philosopher to eat at any time\n");
     for (i = 0; i < howhung; i++, pos++)
     {
-        printf("\nP %d is granted to eat", philname[hu[pos]]);
-        for (x = pos; x < howhung; x++)
-            printf("\nP %d is waiting", philname[hu[x]]);
+        printf("\nP %d is granted to eat", philname[hu[pos] - 1]);
+        for (x = pos + 1; x < howhung; x++)
+            printf("\nP %d is waiting", philname[hu[x] - 1]);
     }
 }
 int two()
@@ -72,18 +72,17 @@ int two()
     {
         for (j = i + 1; j < howhung; j++)
         {
-            if (abs(hu[i] - hu[j]) >= 1 && abs(hu[i] - hu[j]) != 4)
+            if (abs(hu[i] - hu[j]) > 1 && abs(hu[i] - hu[j]) != 4)
             {
                 printf("\n\ncombination %d \n", (s + 1));
                 t = hu[i];
                 r = hu[j];
                 s++;
-                printf("\nP %d and P %d are granted to eat", philname[hu[i]],
-                       philname[hu[j]]);
+                printf("\nP %d and P %d are granted to eat", philname[hu[i] - 1], philname[hu[j] - 1]);
                 for (x = 0; x < howhung; x++)
                 {
                     if ((hu[x] != t) && (hu[x] != r))
-                        printf("\nP %d is waiting", philname[hu[x]]);
+                        printf("\nP %d is waiting", philname[hu[x] - 1]);
                 }
             }
         }
